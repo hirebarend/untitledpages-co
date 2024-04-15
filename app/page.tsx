@@ -172,7 +172,7 @@ export default function Home() {
           </Form.Group>
 
           <Button
-            className="mb-4 w-100"
+            className="fw-semibold mb-4 text-dark w-100"
             onClick={() => formik.submitForm()}
             size="lg"
           >

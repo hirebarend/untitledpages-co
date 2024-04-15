@@ -120,13 +120,21 @@ export default function Home() {
   }
 
   return (
-    <Container className="px-5" style={{ marginTop: "6rem" }}>
-      <Row>
+    <div>
+      <Row className="m-0">
         <Col
-          className="text-center"
+          className="bg-dark d-none d-md-block"
+          style={{ height: "100dvh" }}
           xs={12}
-          md={{ offset: 6, span: 6 }}
-          lg={{ offset: 6, span: 6 }}
+          md={6}
+          lg={6}
+        ></Col>
+        <Col
+          className="px-5 text-center"
+          style={{ paddingTop: "6rem" }}
+          xs={12}
+          md={6}
+          lg={6}
         >
           <h5 className="fw-bold text-primary">Unlock Your Potential</h5>
           <h1 className="display-5 fw-bold mb-4">
@@ -185,6 +193,6 @@ export default function Home() {
           </div>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import mixpanel from "mixpanel-browser";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -18,6 +19,10 @@ export default function Home() {
   );
 
   useEffect(() => {
+    mixpanel.init("6570fb6b55412e8145762b070dd25c3b");
+
+    mixpanel.track("Page View");
+
     if (false) {
       setRecord({
         "Email Address": "hirebarend@gmail.com",

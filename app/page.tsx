@@ -130,8 +130,7 @@ export default function Home() {
           lg={6}
         ></Col>
         <Col
-          className="px-3 text-center"
-          style={{ paddingTop: "5rem" }}
+          className="custom-container px-3 px-md-5 text-center"
           xs={12}
           md={6}
           lg={6}

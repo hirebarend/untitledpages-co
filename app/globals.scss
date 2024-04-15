@@ -8,3 +8,13 @@ $success: #51a800;
 $warning: #ffbe1a;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.custom-container {
+  padding-top: 5rem;
+}
+
+@include media-breakpoint-up(md) {
+  .custom-container {
+    padding-top: 7rem;
+  }
+}

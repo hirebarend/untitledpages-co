@@ -77,7 +77,7 @@ export default function Home() {
               <span className="text-primary">#{record.Position}</span>
             </h1>
             <h2 className="lead lh-base mb-5 text-center">
-              Congratulations, you've secured your place! You are currently
+              Congratulations, you&apos;ve secured your place! You are currently
               number{" "}
               <span className="fw-bold text-primary">#{record.Position}</span>{" "}
               in the queue. Boost your spot by referring friends and rise up the

@@ -63,18 +63,19 @@ export default function Home() {
         <Row>
           <Col xs={12} md={{ offset: 3, span: 6 }} lg={{ offset: 3, span: 6 }}>
             <h1 className="display-5 fw-bold mb-4 text-center">
-              You're <span className="text-primary">#{record.Position}</span>
+              You&apos;re{" "}
+              <span className="text-primary">#{record.Position}</span>
             </h1>
             <h2 className="lead lh-base mb-5 text-center">
-              I appreciate your interest! You'll be notified as soon as a spot
-              opens up.
+              I appreciate your interest! You&apos;ll be notified as soon as a
+              spot opens up.
             </h2>
 
             <div className="border border-2 border-primary p-4 rounded text-center">
               <h2 className="fs-5 fw-bold">Move up by sharing!</h2>
               <h3 className="lead lh-base mb-4">
                 Want a higher spot? Share this link with your friends. For each
-                friend who signs up, you'll climb up in the queue.
+                friend who signs up, you&apos;ll climb up in the queue.
               </h3>
 
               <Form.Group className="mb-4">
@@ -127,9 +128,10 @@ export default function Home() {
           </h1>
           <h2 className="lead lh-base mb-5">
             With over a decade in the industry and hands-on business experience,
-            I'm here to guide you through your software development journey.
-            Learn from my successes and setbacks to accelerate your growth.
-            Limited mentorship slots available – join the waitlist today!
+            I&apos;m here to guide you through your software development
+            journey. Learn from my successes and setbacks to accelerate your
+            growth. Limited mentorship slots available – join the waitlist
+            today!
           </h2>
 
           <Form.Group className="mb-4">
@@ -174,7 +176,7 @@ export default function Home() {
           </Button>
 
           <div>
-            By clicking "Continue" you agree to our{" "}
+            By clicking &quot;Continue&quot; you agree to our{" "}
             <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>
           </div>
         </Col>

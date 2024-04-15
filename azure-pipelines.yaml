@@ -9,22 +9,22 @@ variables:
   resource_group_name: "untitled-pages"
 
 steps:
-  - task: AzureCLI@2
-    displayName: "Azure CLI: Create Resource Group"
-    inputs:
-      azureSubscription: $(azure_subscription)
-      scriptType: bash
-      scriptLocation: inlineScript
-      inlineScript: 'az group create -n $(resource_group_name) -l "West Europe"'
-  - task: AzureResourceManagerTemplateDeployment@3
-    displayName: "ARM Template deployment: Resource Group scope"
-    inputs:
-      azureResourceManagerConnection: $(azure_subscription)
-      subscriptionId: "2427e3e3-f607-4705-8318-55e1e2605405"
-      resourceGroupName: $(resource_group_name)
-      location: "West Europe"
-      csmFile: "template.bicep"
-      deploymentMode: Incremental
+  # - task: AzureCLI@2
+  #   displayName: "Azure CLI: Create Resource Group"
+  #   inputs:
+  #     azureSubscription: $(azure_subscription)
+  #     scriptType: bash
+  #     scriptLocation: inlineScript
+  #     inlineScript: 'az group create -n $(resource_group_name) -l "West Europe"'
+  # - task: AzureResourceManagerTemplateDeployment@3
+  #   displayName: "ARM Template deployment: Resource Group scope"
+  #   inputs:
+  #     azureResourceManagerConnection: $(azure_subscription)
+  #     subscriptionId: "2427e3e3-f607-4705-8318-55e1e2605405"
+  #     resourceGroupName: $(resource_group_name)
+  #     location: "West Europe"
+  #     csmFile: "template.bicep"
+  #     deploymentMode: Incremental
   - task: Npm@1
     displayName: "NPM: Install"
     inputs:

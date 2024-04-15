@@ -1,0 +1,57 @@
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  azure_subscription: "ARM (hirebarend)"
+  resource_group_name: "untitled-pages"
+
+steps:
+  - task: AzureCLI@2
+    displayName: "Azure CLI: Create Resource Group"
+    inputs:
+      azureSubscription: $(azure_subscription)
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: 'az group create -n $(resource_group_name) -l "West Europe"'
+  - task: AzureResourceManagerTemplateDeployment@3
+    displayName: "ARM Template deployment: Resource Group scope"
+    inputs:
+      azureResourceManagerConnection: $(azure_subscription)
+      subscriptionId: "2427e3e3-f607-4705-8318-55e1e2605405"
+      resourceGroupName: $(resource_group_name)
+      location: "West Europe"
+      csmFile: "template.bicep"
+      deploymentMode: Incremental
+  - task: Npm@1
+    displayName: "NPM: Install"
+    inputs:
+      verbose: false
+  - task: Npm@1
+    displayName: "NPM: Build"
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: "run build"
+  - task: CopyFiles@2
+    displayName: "Copy Files to: $(System.DefaultWorkingDirectory)/out"
+    inputs:
+      Contents: staticwebapp.config.json
+      TargetFolder: "$(System.DefaultWorkingDirectory)/out"
+  - task: ArchiveFiles@2
+    displayName: "Archive $(System.DefaultWorkingDirectory)"
+    inputs:
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+      includeRootFolder: false
+      archiveFile: "$(Build.ArtifactStagingDirectory)/artifact.zip"
+  - task: AzureStaticWebApp@0
+    displayName: "Deploy Static Web App"
+    inputs:
+      app_location: out
+      skip_app_build: false
+      skip_api_build: false
+      is_static_export: false
+      verbose: false
+      azure_static_web_apps_api_token: $(deployment_token)

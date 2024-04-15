@@ -10,11 +10,13 @@ $warning: #ffbe1a;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 .custom-container {
+  padding-bottom: 3rem;
   padding-top: 5rem;
 }
 
 @include media-breakpoint-up(md) {
   .custom-container {
+    padding-bottom: 0rem;
     padding-top: 7rem;
   }
 }

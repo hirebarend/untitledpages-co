@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -16,6 +16,16 @@ export default function Home() {
   const [record, setRecord] = useState(
     null as { "Email Address": string; Name: string; Position: number } | null
   );
+
+  useEffect(() => {
+    if (false) {
+      setRecord({
+        "Email Address": "hirebarend@gmail.com",
+        Name: "Barend",
+        Position: 14,
+      });
+    }
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -67,46 +77,37 @@ export default function Home() {
               <span className="text-primary">#{record.Position}</span>
             </h1>
             <h2 className="lead lh-base mb-5 text-center">
-              I appreciate your interest! You&apos;ll be notified as soon as a
-              spot opens up.
+              Congratulations, you've secured your place! You are currently
+              number{" "}
+              <span className="fw-bold text-primary">#{record.Position}</span>{" "}
+              in the queue. Boost your spot by referring friends and rise up the
+              ranks!
             </h2>
 
-            <div className="border border-2 border-primary p-4 rounded text-center">
-              <h2 className="fs-5 fw-bold">Move up by sharing!</h2>
-              <h3 className="lead lh-base mb-4">
-                Want a higher spot? Share this link with your friends. For each
-                friend who signs up, you&apos;ll climb up in the queue.
-              </h3>
-
-              <Form.Group className="mb-4">
-                <InputGroup>
-                  <Form.Control
-                    disabled={true}
-                    value={`https://untitledpages.co?emailAddress=${encodeURIComponent(
-                      record["Email Address"]
-                    )}`}
-                  />
-                  <Button
-                    className="align-items-center d-flex justify-content-center text-white"
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        `https://untitledpages.co?emailAddress=${encodeURIComponent(
-                          record["Email Address"]
-                        )}`
-                      );
-                    }}
-                    variant="dark"
-                  >
-                    <BsFiles size={14} />
-                    &nbsp;Copy
-                  </Button>
-                </InputGroup>
-              </Form.Group>
-
-              {/* <div>
-                The more you share, the higher you&apos;ll climb up the list.
-              </div> */}
-            </div>
+            <Form.Group className="mb-4">
+              <InputGroup>
+                <Form.Control
+                  disabled={true}
+                  value={`https://untitledpages.co?emailAddress=${encodeURIComponent(
+                    record["Email Address"]
+                  )}`}
+                />
+                <Button
+                  className="align-items-center d-flex justify-content-center text-white"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `https://untitledpages.co?emailAddress=${encodeURIComponent(
+                        record["Email Address"]
+                      )}`
+                    );
+                  }}
+                  variant="dark"
+                >
+                  <BsFiles size={14} />
+                  &nbsp;Copy
+                </Button>
+              </InputGroup>
+            </Form.Group>
           </Col>
         </Row>
       </Container>
@@ -122,16 +123,14 @@ export default function Home() {
           md={{ offset: 6, span: 6 }}
           lg={{ offset: 6, span: 6 }}
         >
-          <h5>Unlock Your Potential</h5>
+          <h5 className="fw-bold text-primary">Unlock Your Potential</h5>
           <h1 className="display-5 fw-bold mb-4">
             Exclusive 1-on-1 Software Engineering Mentorship!
           </h1>
           <h2 className="lead lh-base mb-5">
-            With over a decade in the industry and hands-on business experience,
-            I&apos;m here to guide you through your software development
-            journey. Learn from my successes and setbacks to accelerate your
-            growth. Limited mentorship slots available – join the waitlist
-            today!
+            Grab your chance to be personally mentored by me. Reserve your spot
+            on my mentorship waitlist today and start your transformative
+            journey in software engineering.
           </h2>
 
           <Form.Group className="mb-4">
@@ -143,7 +142,7 @@ export default function Home() {
               name="name"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              placeholder="Tell me your name..."
+              placeholder="Enter your name..."
               size="lg"
               type="text"
               value={formik.values.name}

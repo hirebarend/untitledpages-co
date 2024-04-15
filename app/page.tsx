@@ -131,7 +131,7 @@ export default function Home() {
         ></Col>
         <Col
           className="px-3 text-center"
-          style={{ paddingTop: "6rem" }}
+          style={{ paddingTop: "5rem" }}
           xs={12}
           md={6}
           lg={6}

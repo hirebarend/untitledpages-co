@@ -156,6 +156,7 @@ export function WaitlistStep1Page(props: {
 
       <Button
         className="fw-semibold mb-4 text-dark w-100"
+        disabled={formik.isSubmitting}
         onClick={() => formik.submitForm()}
         size="lg"
       >

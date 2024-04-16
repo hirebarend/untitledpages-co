@@ -74,9 +74,22 @@ export default function Home() {
 
   if (record) {
     return (
-      <Container className="px-5" style={{ marginTop: "12rem" }}>
-        <Row>
-          <Col xs={12} md={{ offset: 3, span: 6 }} lg={{ offset: 3, span: 6 }}>
+      <div>
+        <Row className="m-0">
+          <Col
+            className="d-none d-md-block"
+            style={{ height: "100dvh" }}
+            xs={12}
+            md={6}
+            lg={6}
+          ></Col>
+          <Col
+            className="bg-dark custom-container px-3 px-md-5 text-center text-white"
+            style={{ height: "100dvh" }}
+            xs={12}
+            md={6}
+            lg={6}
+          >
             <h1 className="display-5 fw-bold mb-4 text-center">
               You&apos;re{" "}
               <span className="text-primary">#{record.Position}</span>
@@ -93,6 +106,7 @@ export default function Home() {
               <InputGroup>
                 <Form.Control
                   disabled={true}
+                  size="lg"
                   value={`https://untitledpages.co?emailAddress=${encodeURIComponent(
                     record["Email Address"]
                   )}`}
@@ -106,7 +120,8 @@ export default function Home() {
                       )}`
                     );
                   }}
-                  variant="dark"
+                  size="lg"
+                  variant="primary"
                 >
                   <BsFiles size={14} />
                   &nbsp;Copy
@@ -115,7 +130,7 @@ export default function Home() {
             </Form.Group>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 
@@ -123,14 +138,15 @@ export default function Home() {
     <div>
       <Row className="m-0">
         <Col
-          className="bg-dark d-none d-md-block"
+          className="d-none d-md-block"
           style={{ height: "100dvh" }}
           xs={12}
           md={6}
           lg={6}
         ></Col>
         <Col
-          className="custom-container px-3 px-md-5 text-center"
+          className="bg-dark custom-container px-3 px-md-5 text-center text-white"
+          style={{ height: "100dvh" }}
           xs={12}
           md={6}
           lg={6}

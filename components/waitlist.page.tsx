@@ -54,7 +54,9 @@ export function WaitlistStep1Page(props: {
         }
       );
 
-      if (searchParams.get("refer")) {
+      const referrer = searchParams.get("referrer");
+
+      if (referrer) {
         const responseRecord = await axios.get<{
           id: string;
           createdTime: string;
@@ -64,24 +66,19 @@ export function WaitlistStep1Page(props: {
             Name: string;
             Referrals: number;
           };
-        }>(
-          `https://api.airtable.com/v0/appF0GZFRkzXlzIYN/Leads/${searchParams.get(
-            "refer"
-          )}`,
-          {
-            headers: {
-              Authorization:
-                "Bearer patyzPiIsrpFV8kvw.0a04121ead945583b1169acbafe6b3a60b34851ff5884d5813c07c709704bf84",
-            },
-          }
-        );
+        }>(`https://api.airtable.com/v0/appF0GZFRkzXlzIYN/Leads/${referrer}`, {
+          headers: {
+            Authorization:
+              "Bearer patyzPiIsrpFV8kvw.0a04121ead945583b1169acbafe6b3a60b34851ff5884d5813c07c709704bf84",
+          },
+        });
 
         await axios.patch(
           `https://api.airtable.com/v0/appF0GZFRkzXlzIYN/Leads`,
           {
             records: [
               {
-                id: searchParams.get("refer"),
+                id: referrer,
                 fields: {
                   Referrals: responseRecord.data.fields.Referrals + 1,
                 },
@@ -193,13 +190,13 @@ export function WaitlistStep2Page(props: {
           <Form.Control
             disabled={true}
             size="lg"
-            value={`${window.location.origin}/?refer=${props.id}`}
+            value={`${window.location.origin}/?referrer=${props.id}`}
           />
           <Button
             className="align-items-center d-flex justify-content-center text-white"
             onClick={() => {
               navigator.clipboard.writeText(
-                `${window.location.origin}/?refer=${props.id}`
+                `${window.location.origin}/?referrer=${props.id}`
               );
             }}
             size="lg"

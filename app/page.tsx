@@ -22,7 +22,7 @@ export default function Home() {
       <Row className="m-0">
         <Col
           className="custom-container d-none d-md-block px-3 px-md-5 text-center"
-          style={{ height: "100dvh" }}
+          style={{ minHeight: "100dvh" }}
           xs={12}
           md={6}
           lg={6}
@@ -53,7 +53,7 @@ export default function Home() {
         </Col>
         <Col
           className="bg-dark custom-container px-3 px-md-5 text-center text-white"
-          style={{ height: "100dvh" }}
+          style={{ minHeight: "100dvh" }}
           xs={12}
           md={6}
           lg={6}

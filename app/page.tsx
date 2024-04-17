@@ -34,11 +34,12 @@ export default function Home() {
     <div>
       <Row className="m-0">
         <Col
-          className="custom-container d-none d-md-block px-3 px-md-5 text-center"
+          // className="custom-container d-none d-md-block px-3 px-md-5 text-center"
+          className="custom-container px-3 px-md-5 text-center"
           style={{ minHeight: "100dvh" }}
-          xs={12}
-          md={6}
-          lg={6}
+          xs={{ order: 2, span: 12 }}
+          md={{ order: 1, span: 6 }}
+          lg={{ order: 1, span: 6 }}
         >
           <div className="mb-5">
             <img
@@ -68,9 +69,9 @@ export default function Home() {
         <Col
           className="bg-dark custom-container px-3 px-md-5 text-center text-white"
           style={{ minHeight: "100dvh" }}
-          xs={12}
-          md={6}
-          lg={6}
+          xs={{ order: 1, span: 12 }}
+          md={{ order: 1, span: 6 }}
+          lg={{ order: 1, span: 6 }}
         >
           {fetchResult.result.data ? (
             <WaitlistStep2Page

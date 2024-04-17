@@ -40,14 +40,23 @@ export default function Home() {
           md={6}
           lg={6}
         >
-          {/* <div className="fs-5 lh-base mb-3">
+          <div className="mb-5">
+            <img
+              className="rounded-circle"
+              width="33%"
+              src="https://media.licdn.com/dms/image/D4D03AQFPoVsv5Iy2Eg/profile-displayphoto-shrink_400_400/0/1709877923476?e=1718841600&v=beta&t=jS0N9bJRFs9Jyhcli-d4XHNGxMez3dtA_CuXTKW9tw4"
+            />
+          </div>
+
+          <div className="fs-5 lh-base mb-3">
             I&apos;m{" "}
             <a
-              href="https://www.linkedin.com/in/hirebarend/"
+              className="fw-bold text-dark"
+              href="https://www.linkedin.com/in/hirebarend"
               referrerPolicy="no-referrer"
               target="_blank"
             >
-              🖖 Barend Erasmus
+              Barend Erasmus
             </a>
             , a mentor with over 10 years in the software engineering industry.
             My career has been a journey of consistent growth, earning
@@ -55,14 +64,6 @@ export default function Home() {
             personal achievements, I&apos;ve dedicated myself to guiding others,
             helping them advance or pivot their careers successfully.
           </div>
-
-          <div className="fs-5 lh-base mb-3">
-            I bring a wealth of experience in LinkedIn presence, resumes,
-            interviews, and personal branding, skills I&apos;ve mastered to
-            stand out in the competitive tech landscape. My mentorship is built
-            on a holistic approach, focusing on both technical skills and the
-            personal branding essential for making a lasting impact.
-          </div> */}
         </Col>
         <Col
           className="bg-dark custom-container px-3 px-md-5 text-center text-white"

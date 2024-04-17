@@ -1,4 +1,3 @@
-import axios from "axios";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import Form from "react-bootstrap/Form";
@@ -6,15 +5,20 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { BsFiles } from "react-icons/bs";
 import * as Yup from "yup";
 import { useSearchParams } from "next/navigation";
+import { StoreService } from "@/core";
 
 export function WaitlistStep1Page(props: {
-  onSubmit: (record: {
-    emailAddress: string;
+  onSubmit: (entry: {
+    created: number;
     id: string;
+    metadata: { [key: string]: string | null };
     position: number;
+    referrer: string | null;
+    referrals: number;
+    updated: number;
   }) => void;
 }) {
-  const searchParams = useSearchParams();
+  const urlSearchParams = useSearchParams();
 
   const formik = useFormik({
     initialValues: {
@@ -22,85 +26,13 @@ export function WaitlistStep1Page(props: {
       name: "",
     },
     onSubmit: async (values) => {
-      const response = await axios.post<{
-        records: Array<{
-          id: string;
-          createdTime: string;
-          fields: {
-            "Email Address": string;
-            Name: string;
-            Position: number;
-            Referrals: number;
-          };
-        }>;
-      }>(
-        "https://api.airtable.com/v0/appF0GZFRkzXlzIYN/Leads",
-        {
-          records: [
-            {
-              fields: {
-                "Email Address": values.emailAddress,
-                Name: values.name,
-                Referrals: 0,
-              },
-            },
-          ],
-        },
-        {
-          headers: {
-            Authorization:
-              "Bearer patyzPiIsrpFV8kvw.0a04121ead945583b1169acbafe6b3a60b34851ff5884d5813c07c709704bf84",
-          },
-        }
-      );
+      const referrer = urlSearchParams.get("referrer");
 
-      const referrer = searchParams.get("referrer");
-
-      if (referrer) {
-        const responseRecord = await axios.get<{
-          id: string;
-          createdTime: string;
-          fields: {
-            Position: number;
-            "Email Address": string;
-            Name: string;
-            Referrals: number;
-          };
-        }>(`https://api.airtable.com/v0/appF0GZFRkzXlzIYN/Leads/${referrer}`, {
-          headers: {
-            Authorization:
-              "Bearer patyzPiIsrpFV8kvw.0a04121ead945583b1169acbafe6b3a60b34851ff5884d5813c07c709704bf84",
-          },
-        });
-
-        await axios.patch(
-          `https://api.airtable.com/v0/appF0GZFRkzXlzIYN/Leads`,
-          {
-            records: [
-              {
-                id: referrer,
-                fields: {
-                  Referrals: responseRecord.data.fields.Referrals + 1,
-                },
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization:
-                "Bearer patyzPiIsrpFV8kvw.0a04121ead945583b1169acbafe6b3a60b34851ff5884d5813c07c709704bf84",
-            },
-          }
-        );
-      }
-
-      props.onSubmit({
-        emailAddress: response.data.records[0].fields["Email Address"],
-        id: response.data.records[0].id,
-        position: response.data.records[0].fields["Position"],
+      const entry = await StoreService.create(referrer, {
+        ...values,
       });
 
-      formik.resetForm();
+      props.onSubmit(entry);
     },
     validationSchema: Yup.object().shape({
       emailAddress: Yup.string().email().required(),

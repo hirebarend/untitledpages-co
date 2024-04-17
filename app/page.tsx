@@ -1,21 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import mixpanel from "mixpanel-browser";
+import { useSearchParams } from "next/navigation";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { WaitlistStep1Page, WaitlistStep2Page } from "@/components";
+import { StoreService } from "@/core";
+import { useFetch } from "@/hooks";
 
 export default function Home() {
-  const [record, setRecord] = useState(
-    null as { emailAddress: string; id: string; position: number } | null
-  );
+  const urlSearchParams = useSearchParams();
+
+  const fetchResult = useFetch({
+    fn: async (id: string | null) => (id ? await StoreService.find(id) : null),
+  });
 
   useEffect(() => {
     mixpanel.init("6570fb6b55412e8145762b070dd25c3b");
 
     mixpanel.track("Page View");
-  }, []);
+
+    const id = urlSearchParams.get("id");
+
+    fetchResult.execute(id);
+  }, [urlSearchParams]);
+
+  if (!fetchResult.result) {
+    return <></>;
+  }
 
   return (
     <div>
@@ -58,15 +71,27 @@ export default function Home() {
           md={6}
           lg={6}
         >
-          {record ? (
+          {fetchResult.result.data ? (
             <WaitlistStep2Page
-              emailAddress={record.emailAddress}
-              heading={`You're <span class="text-primary">#${record.position}</span>`}
-              id={record.id}
-              subheading={`Congratulations, you've secured your place! You are currently number <span class="fw-bold text-primary">#${record.position}</span> in the queue. Boost your spot by referring friends and rise up the ranks!`}
+              emailAddress={
+                fetchResult.result.data.metadata["emailAddress"] || ""
+              }
+              heading={`You're <span class="text-primary">#${fetchResult.result.data.position}</span>`}
+              id={fetchResult.result.data.id}
+              subheading={`Congratulations, you've secured your place! You are currently number <span class="fw-bold text-primary">#${fetchResult.result.data.position}</span> in the queue. Boost your spot by referring friends and rise up the ranks!`}
             />
           ) : (
-            <WaitlistStep1Page onSubmit={(x) => setRecord(x)} />
+            <WaitlistStep1Page
+              onSubmit={(x) => {
+                const urlSearchParams = new URLSearchParams(
+                  window.location.search
+                );
+
+                urlSearchParams.set("id", x.id);
+
+                window.location.search = urlSearchParams.toString();
+              }}
+            />
           )}
         </Col>
       </Row>

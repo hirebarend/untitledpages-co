@@ -6,6 +6,7 @@ import {
   query,
   addDoc,
   getDocs,
+  where,
 } from "firebase/firestore/lite";
 import { FIRESTORE } from "./firebase";
 
@@ -32,8 +33,6 @@ export class StoreService {
     referrals: number;
     updated: number;
   }> {
-    const entry = referrer ? await StoreService.find(referrer) : null;
-
     const count = await StoreService.count();
 
     const collectionReference = collection(FIRESTORE, "entries");
@@ -88,6 +87,46 @@ export class StoreService {
     } = {
       ...(documentSnapshot.data() as any),
       id: documentReference.id,
+    };
+
+    return document;
+  }
+
+  public static async findByEmailAddress(emailAddress: string): Promise<{
+    created: number;
+    id: string;
+    metadata: { [key: string]: string | null };
+    position: number;
+    referrer: string | null;
+    referrals: number;
+    updated: number;
+  } | null> {
+    const collectionReference = collection(FIRESTORE, "entries");
+
+    const querySnapshot = await getDocs(
+      query(
+        collectionReference,
+        where("metadata.emailAddress", "==", emailAddress)
+      )
+    );
+
+    if (querySnapshot.empty) {
+      return null;
+    }
+
+    const queryDocumentSnapshot = querySnapshot.docs[0];
+
+    const document: {
+      created: number;
+      id: string;
+      metadata: { [key: string]: string | null };
+      position: number;
+      referrer: string | null;
+      referrals: number;
+      updated: number;
+    } = {
+      ...(queryDocumentSnapshot.data() as any),
+      id: queryDocumentSnapshot.id,
     };
 
     return document;

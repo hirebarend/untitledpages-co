@@ -28,9 +28,11 @@ export function WaitlistStep1Page(props: {
     onSubmit: async (values) => {
       const referrer = urlSearchParams.get("referrer");
 
-      const entry = await StoreService.create(referrer, {
-        ...values,
-      });
+      const entry =
+        (await StoreService.findByEmailAddress(values.emailAddress)) ||
+        (await StoreService.create(referrer, {
+          ...values,
+        }));
 
       props.onSubmit(entry);
     },
@@ -46,11 +48,41 @@ export function WaitlistStep1Page(props: {
       <h1 className="display-5 fw-bold mb-4">
         Exclusive 1-on-1 Software Engineering Mentorship!
       </h1>
-      <h2 className="lead lh-base mb-5">
+      <h2 className="lead lh-base mb-4">
         Grab your chance to be personally mentored by me. Reserve your spot on
-        my mentorship waitlist today and start your transformative journey in
-        software engineering.
+        my mentorship waitlist today.
       </h2>
+
+      <div className="d-flex justify-content-center mb-1">
+        {[
+          "https://media.licdn.com/dms/image/C4D03AQEn7dr7sb-Mcw/profile-displayphoto-shrink_400_400/0/1619977048027?e=1719446400&v=beta&t=0OQwD1aAqCoAbP_Ge0HjHpMxHuMfX-xyoi3lu-r0pN8",
+          "https://media.licdn.com/dms/image/C5103AQHivmtnC3h65w/profile-displayphoto-shrink_400_400/0/1517612713175?e=1719446400&v=beta&t=tz1xTMhVxG830j0FIPM_znUzN9GMcMO75Nj5wovkq0A",
+          "https://media.licdn.com/dms/image/D4D03AQFtg8AGEYfyQA/profile-displayphoto-shrink_400_400/0/1713178817714?e=1719446400&v=beta&t=lkzvU3rDQOJB4y7jnxASNZevzI8WMr9duVU8A-OyiX8",
+          "https://media.licdn.com/dms/image/D4D03AQFfK-zhFL2E1w/profile-displayphoto-shrink_400_400/0/1669488535518?e=1719446400&v=beta&t=z-nLmnEIpztppthXm4agrNoeLjD7nYANvVFg4WKck8A",
+          "https://media.licdn.com/dms/image/D4D03AQEUjbaZdUsgGQ/profile-displayphoto-shrink_400_400/0/1688470769990?e=1719446400&v=beta&t=e71HunuR1o9EDI6G7moQK3292jqqmvApI5CDyJQ1Pxc",
+          "https://media.licdn.com/dms/image/D4E03AQGA3K3AVHRACg/profile-displayphoto-shrink_400_400/0/1699610969845?e=1719446400&v=beta&t=WAlFNn9xt2NGTxuzFUU6nvj6YlnQ8LBL59zrbJ7Mlug",
+          "https://media.licdn.com/dms/image/C5603AQHSg60zgYsq0w/profile-displayphoto-shrink_400_400/0/1572587126292?e=1719446400&v=beta&t=a4DE6lrebzR0MrTf15B7pr4QuL-9oDoBmo9DId-OS-k",
+
+          // "https://randomuser.me/api/portraits/med/men/3.jpg",
+          // "https://randomuser.me/api/portraits/med/women/5.jpg",
+          // "https://randomuser.me/api/portraits/med/men/8.jpg",
+          // "https://randomuser.me/api/portraits/med/men/13.jpg",
+          // "https://randomuser.me/api/portraits/med/women/21.jpg",
+          // "https://randomuser.me/api/portraits/med/men/44.jpg",
+        ].map((x, index) => (
+          <img
+            className="rounded-circle"
+            key={x}
+            src={x}
+            style={{ marginLeft: index === 0 ? "0px" : "-24px" }}
+            width={48}
+          />
+        ))}
+      </div>
+
+      <div className="fst-italic mb-5 text-primary">
+        Over 20 individuals are already on the waitlist.
+      </div>
 
       <Form.Group className="mb-4">
         <Form.Control
@@ -125,7 +157,7 @@ export function WaitlistStep2Page(props: {
             value={`${window.location.origin}/?referrer=${props.id}`}
           />
           <Button
-            className="align-items-center d-flex justify-content-center text-white"
+            className="align-items-center d-flex fw-medium justify-content-center"
             onClick={() => {
               navigator.clipboard.writeText(
                 `${window.location.origin}/?referrer=${props.id}`
@@ -134,7 +166,7 @@ export function WaitlistStep2Page(props: {
             size="lg"
             variant="primary"
           >
-            <BsFiles size={14} />
+            <BsFiles size={14} strokeWidth={0.375} />
             &nbsp;Copy
           </Button>
         </InputGroup>

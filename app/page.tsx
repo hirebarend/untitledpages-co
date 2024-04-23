@@ -60,10 +60,7 @@ export default function Home() {
               Barend Erasmus
             </a>
             , a mentor with over 10 years in the software engineering industry.
-            My career has been a journey of consistent growth, earning
-            promotions annually and sometimes within just six months. Beyond my
-            personal achievements, I&apos;ve dedicated myself to guiding others,
-            helping them advance or pivot their careers successfully.
+            My career has been a journey of consistent growth.
           </div>
         </Col>
         <Col

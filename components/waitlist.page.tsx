@@ -71,6 +71,7 @@ export function WaitlistStep1Page(props: {
           // "https://randomuser.me/api/portraits/med/men/44.jpg",
         ].map((x, index) => (
           <img
+            alt={`Image ${index + 1}`}
             className="rounded-circle"
             key={x}
             src={x}

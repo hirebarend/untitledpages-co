@@ -1,3 +1,4 @@
+import moment from "moment";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import Form from "react-bootstrap/Form";
@@ -32,6 +33,7 @@ export function WaitlistStep1Page(props: {
         (await StoreService.findByEmailAddress(values.emailAddress)) ||
         (await StoreService.create(referrer, {
           ...values,
+          month: moment().format("MMMM"),
         }));
 
       props.onSubmit(entry);

@@ -9,6 +9,7 @@ import {
   getDocs,
   where,
 } from "firebase/firestore/lite";
+import moment from "moment";
 import { FIRESTORE } from "./firebase";
 
 function scramble(str: string, shift: number): string {
@@ -33,10 +34,12 @@ function scramble(str: string, shift: number): string {
 }
 
 export class StoreService {
-  public static async count(): Promise<number> {
+  public static async count(month: string): Promise<number> {
     const collectionReference = collection(FIRESTORE, "entries");
 
-    const querySnapshot = await getDocs(query(collectionReference));
+    const querySnapshot = await getDocs(
+      query(collectionReference, where("metadata.month", "==", month))
+    );
 
     return querySnapshot.size + 14;
   }
@@ -55,7 +58,7 @@ export class StoreService {
     referrals: number;
     updated: number;
   }> {
-    const count = await StoreService.count();
+    const count = await StoreService.count(moment().format("MMMM"));
 
     const collectionReference = collection(FIRESTORE, "entries");
 

@@ -30,6 +30,25 @@ export default function Home() {
       heading="Access To Link Bird Source Code"
       onSubmit={async (emailAddress, name) => {
         await axios.post(
+          "https://api.brevo.com/v3/contacts",
+          {
+            attributes: {
+              firstName: name,
+            },
+            email: emailAddress,
+            listIds: [5],
+          },
+          {
+            headers: {
+              "api-key": scramble(
+                "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
+                -12
+              ),
+            },
+          }
+        );
+
+        await axios.post(
           "https://api.brevo.com/v3/smtp/email",
           {
             sender: {

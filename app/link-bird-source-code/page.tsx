@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <Template2
       heading="Access To Link Bird Source Code"
-      onSubmit={async (emailAddres, name) => {
+      onSubmit={async (emailAddress, name) => {
         await axios.post(
           "https://api.brevo.com/v3/smtp/email",
           {
@@ -38,11 +38,11 @@ export default function Home() {
             },
             to: [
               {
-                email: emailAddres,
+                email: emailAddress,
                 name,
               },
             ],
-            subject: "Access to Link Bird's Source Code",
+            subject: "Access to Link Bird Source Code",
             htmlContent: `<html><head></head><body><p>Hi ${name},</p><p>Thanks for reaching out to explore the Link Bird source code! I'm really excited to see what you'll create with it.</p><p>Here's the link to download the source code:&nbsp;<a href="https://untitledpages.co/downloads/link-bird-source-code.zip">Download Source Code</a></p><p>If you have any questions, ideas, or need a hand with anything, feel free to drop me a line. I’m here to help and would love to hear about your projects or any feedback you might have.</p><p>Happy coding!</p><p>Best,</p><p>Barend</p></body></html>`,
           },
           {

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       "Link Bird is an API-first alternative to Bitly, Dub.co, Bl.ink, Short.io and many others.",
     images: [
-      `https://untitledpages.co/images/link-bird-source-code/open-graph-image.png?v=2`,
+      `https://untitledpages.co/images/link-bird-source-code/open-graph-image.png?v=3`,
     ],
     siteName: "Untitled Pages",
     title: "Link Bird Source Code | Untitled Pages",

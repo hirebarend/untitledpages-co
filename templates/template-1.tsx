@@ -1,23 +1,34 @@
+import { useEffect } from "react";
+import { useFormik } from "formik";
+import mixpanel from "mixpanel-browser";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
-import { useFormik } from "formik";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { BsFiles } from "react-icons/bs";
+import Row from "react-bootstrap/Row";
+import { BsArrowRight, BsFiles } from "react-icons/bs";
 import * as Yup from "yup";
 import { useSearchParams } from "next/navigation";
 import { StoreService } from "@/core";
+import { useFetch } from "@/hooks";
 
-export function WaitlistStep1Page(props: {
-  onSubmit: (entry: {
-    created: number;
-    id: string;
-    metadata: { [key: string]: string | null };
-    position: number;
-    referrer: string | null;
-    referrals: number;
-    updated: number;
-  }) => void;
+export function WaitlistStep1(props: {
+  heading: string;
+  onSubmit: (
+    entry: {
+      created: number;
+      id: string;
+      metadata: { [key: string]: string | null };
+      position: number;
+      referrer: string | null;
+      referrals: number;
+      updated: number;
+    },
+    isNew: boolean
+  ) => Promise<void>;
+  segment: string;
+  subheadings: Array<string>;
 }) {
   const urlSearchParams = useSearchParams();
 
@@ -29,14 +40,23 @@ export function WaitlistStep1Page(props: {
     onSubmit: async (values) => {
       const referrer = urlSearchParams.get("referrer");
 
-      const entry =
-        (await StoreService.findByEmailAddress(values.emailAddress)) ||
-        (await StoreService.create(referrer, {
+      let entry = await StoreService.findByEmailAddress(
+        props.segment,
+        values.emailAddress
+      );
+
+      if (!entry) {
+        entry = await StoreService.create(props.segment, referrer, {
           ...values,
           month: moment().format("MMMM"),
-        }));
+        });
 
-      props.onSubmit(entry);
+        await props.onSubmit(entry, true);
+
+        return;
+      }
+
+      await props.onSubmit(entry, false);
     },
     validationSchema: Yup.object().shape({
       emailAddress: Yup.string().email().required(),
@@ -46,14 +66,9 @@ export function WaitlistStep1Page(props: {
 
   return (
     <>
-      <h5 className="fw-bold text-primary">Unlock Your Potential</h5>
-      <h1 className="display-5 fw-bold mb-4">
-        Exclusive 1-on-1 Software Engineering Mentorship!
-      </h1>
-      <h2 className="lead lh-base mb-4">
-        Grab your chance to be personally mentored by me. Reserve your spot on
-        my mentorship waitlist today.
-      </h2>
+      <h5 className="fw-bold text-primary">Exclusive</h5>
+      <h1 className="display-5 fw-bold mb-4">{props.heading}</h1>
+      <h2 className="lead lh-base mb-4">{props.subheadings[0]}</h2>
 
       <div className="d-flex justify-content-center mb-1">
         {[
@@ -83,9 +98,7 @@ export function WaitlistStep1Page(props: {
         ))}
       </div>
 
-      <div className="fst-italic mb-5 text-primary">
-        Over 20 individuals are already on the waitlist.
-      </div>
+      <div className="fst-italic mb-5 text-primary">{props.subheadings[1]}</div>
 
       <Form.Group className="mb-4">
         <Form.Control
@@ -124,7 +137,8 @@ export function WaitlistStep1Page(props: {
         onClick={() => formik.submitForm()}
         size="lg"
       >
-        Continue
+        Continue&nbsp;
+        <BsArrowRight strokeWidth={0.375} />
       </Button>
 
       <div>
@@ -135,7 +149,7 @@ export function WaitlistStep1Page(props: {
   );
 }
 
-export function WaitlistStep2Page(props: {
+export function WaitlistStep2(props: {
   emailAddress: string;
   heading: string;
   id: string;
@@ -175,5 +189,115 @@ export function WaitlistStep2Page(props: {
         </InputGroup>
       </Form.Group>
     </>
+  );
+}
+
+export function Template1(props: {
+  heading: string;
+  onSubmit: (
+    entry: {
+      created: number;
+      id: string;
+      metadata: { [key: string]: string | null };
+      position: number;
+      referrer: string | null;
+      referrals: number;
+      updated: number;
+    },
+    isNew: boolean
+  ) => Promise<void>;
+  segment: string;
+  subheadings: Array<string>;
+}) {
+  const urlSearchParams = useSearchParams();
+
+  const fetchResult = useFetch({
+    fn: async (id: string | null) => (id ? await StoreService.find(id) : null),
+  });
+
+  useEffect(() => {
+    mixpanel.init("6570fb6b55412e8145762b070dd25c3b");
+
+    mixpanel.track("Page View");
+
+    const id = urlSearchParams.get("id");
+
+    fetchResult.execute(id);
+  }, [urlSearchParams]);
+
+  if (!fetchResult.result) {
+    return <></>;
+  }
+
+  return (
+    <div>
+      <Row className="m-0">
+        <Col
+          className="custom-container px-3 px-md-5 text-center"
+          style={{ minHeight: "100dvh" }}
+          xs={{ order: 2, span: 12 }}
+          md={{ order: 1, span: 6 }}
+          lg={{ order: 1, span: 6 }}
+        >
+          <div className="mb-5">
+            <img
+              className="rounded-circle"
+              width="33%"
+              src="https://media.licdn.com/dms/image/D4D03AQFPoVsv5Iy2Eg/profile-displayphoto-shrink_400_400/0/1709877923476?e=1718841600&v=beta&t=jS0N9bJRFs9Jyhcli-d4XHNGxMez3dtA_CuXTKW9tw4"
+            />
+          </div>
+
+          <div className="fs-5 lh-base mb-3">
+            I&apos;m{" "}
+            <a
+              className="fw-bold text-dark"
+              href="https://www.linkedin.com/in/hirebarend"
+              referrerPolicy="no-referrer"
+              target="_blank"
+            >
+              Barend Erasmus
+            </a>
+            , a mentor with over 10 years in the software engineering industry.
+            My career has been a journey of consistent growth.
+          </div>
+        </Col>
+        <Col
+          className="bg-dark custom-container px-3 px-md-5 text-center text-white"
+          style={{ minHeight: "100dvh" }}
+          xs={{ order: 1, span: 12 }}
+          md={{ order: 1, span: 6 }}
+          lg={{ order: 1, span: 6 }}
+        >
+          {fetchResult.result.data ? (
+            <WaitlistStep2
+              emailAddress={
+                fetchResult.result.data.metadata["emailAddress"] || ""
+              }
+              heading={`You're <span class="text-primary">#${fetchResult.result.data.position}</span>`}
+              id={fetchResult.result.data.id}
+              subheading={`Congratulations, you've secured your place! You are currently number <span class="fw-bold text-primary">#${fetchResult.result.data.position}</span> in the queue. Boost your spot by referring friends and rise up the ranks!`}
+            />
+          ) : (
+            <WaitlistStep1
+              heading={props.heading}
+              onSubmit={async (entry, isNew) => {
+                await props.onSubmit(entry, isNew);
+
+                // TODO
+                const urlSearchParams = new URLSearchParams(
+                  window.location.search
+                );
+
+                urlSearchParams.set("id", entry.id);
+
+                window.location.search = urlSearchParams.toString();
+              }}
+              segment={props.segment}
+              subheadings={props.subheadings}
+            />
+          )}
+        </Col>
+      </Row>
+    </div>
   );
 }

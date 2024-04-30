@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: "website",
     description:
       "Grab your chance to be personally mentored by me. Reserve your spot on my mentorship waitlist today and start your transformative journey in software engineering.",
-    images: [`https://untitledpages.co/images/open-graph-image.png?v=1`],
+    images: [`https://untitledpages.co/images/open-graph-image.png?v=2`],
     siteName: "Untitled Pages",
     title: "The 1-on-1 Software Engineering Mentorship! | Untitled Pages",
     url: `https://untitledpages.co`,

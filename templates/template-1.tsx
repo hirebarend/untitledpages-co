@@ -23,6 +23,7 @@ export function WaitlistStep1(props: {
       position: number;
       referrer: string | null;
       referrals: number;
+      segment: string;
       updated: number;
     },
     isNew: boolean
@@ -202,6 +203,7 @@ export function Template1(props: {
       position: number;
       referrer: string | null;
       referrals: number;
+      segment: string;
       updated: number;
     },
     isNew: boolean
@@ -273,9 +275,15 @@ export function Template1(props: {
               emailAddress={
                 fetchResult.result.data.metadata["emailAddress"] || ""
               }
-              heading={`You're <span class="text-primary">#${fetchResult.result.data.position}</span>`}
+              heading={`You're <span class="text-primary">#${
+                fetchResult.result.data.position -
+                fetchResult.result.data.referrals
+              }</span>`}
               id={fetchResult.result.data.id}
-              subheading={`Congratulations, you've secured your place! You are currently number <span class="fw-bold text-primary">#${fetchResult.result.data.position}</span> in the queue. Boost your spot by referring friends and rise up the ranks!`}
+              subheading={`Congratulations, you've secured your place! You are currently number <span class="fw-bold text-primary">#${
+                fetchResult.result.data.position -
+                fetchResult.result.data.referrals
+              }</span> in the queue. Boost your spot by referring friends and rise up the ranks!`}
             />
           ) : (
             <WaitlistStep1

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.scss";
 
 export const metadata: Metadata = {
@@ -21,25 +22,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function RootLayout1({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <head>
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
-    </html>
-  );
+  return <Suspense>{children}</Suspense>;
 }

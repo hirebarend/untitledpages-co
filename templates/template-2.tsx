@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import mixpanel from "mixpanel-browser";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -16,6 +17,8 @@ export function Template2(props: {
   segment: string;
   subheadings: Array<string>;
 }) {
+  const [state, setState] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       emailAddress: "",
@@ -23,6 +26,10 @@ export function Template2(props: {
     },
     onSubmit: async (values) => {
       await props.onSubmit(values.emailAddress, values.name);
+
+      setState(true);
+
+      formik.resetForm();
     },
     validationSchema: Yup.object().shape({
       emailAddress: Yup.string().email().required(),
@@ -137,15 +144,23 @@ export function Template2(props: {
             />
           </Form.Group>
 
-          <Button
-            className="fw-semibold mb-4 text-dark w-100"
-            disabled={formik.isSubmitting}
-            onClick={() => formik.submitForm()}
-            size="lg"
-          >
-            Continue&nbsp;
-            <BsArrowRight strokeWidth={0.375} />
-          </Button>
+          {state ? (
+            <Alert variant="success">
+              Please check your inbox! You&apos;ll receive an email shortly.
+            </Alert>
+          ) : null}
+
+          {state ? null : (
+            <Button
+              className="fw-semibold mb-4 text-dark w-100"
+              disabled={formik.isSubmitting}
+              onClick={() => formik.submitForm()}
+              size="lg"
+            >
+              Continue&nbsp;
+              <BsArrowRight strokeWidth={0.375} />
+            </Button>
+          )}
 
           <div>
             By clicking &quot;Continue&quot; you agree to our{" "}

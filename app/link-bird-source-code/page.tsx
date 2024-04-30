@@ -37,6 +37,7 @@ export default function Home() {
             },
             email: emailAddress,
             listIds: [5],
+            updateEnabled: true,
           },
           {
             headers: {

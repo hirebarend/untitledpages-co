@@ -63,7 +63,7 @@ export default function Home() {
               },
             ],
             subject: "Access to Link Bird Source Code",
-            htmlContent: `<html><head></head><body><p>Hi ${name},</p><p>Thanks for reaching out to explore the Link Bird source code! I'm really excited to see what you'll create with it.</p><p>Here's the link to download the source code:&nbsp;<a href="https://untitledpages.co/downloads/link-bird-source-code.zip">Download Source Code</a></p><p>If you have any questions, ideas, or need a hand with anything, feel free to drop me a line. I’m here to help and would love to hear about your projects or any feedback you might have.</p><p>Happy coding!</p><p>Best,</p><p>Barend</p></body></html>`,
+            htmlContent: `<html><head></head><body><p>Hi ${name},</p><p>Thanks for reaching out to explore the Link Bird source code! I'm really excited to see what you'll create with it.</p><p>Here's the link to download the source code:&nbsp;<a href="https://lnkbrd.com/np4nnf" target="_blank">Download Source Code</a></p><p>If you have any questions, ideas, or need a hand with anything, feel free to drop me a line. I’m here to help and would love to hear about your projects or any feedback you might have.</p><p>Happy coding!</p><p>Best, Barend</p></body></html>`,
           },
           {
             headers: {

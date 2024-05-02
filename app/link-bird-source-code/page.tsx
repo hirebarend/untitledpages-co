@@ -28,6 +28,7 @@ export default function Home() {
   return (
     <Template2
       heading="Access To Link Bird Source Code"
+      message="Please check your inbox! You'll receive an email shortly."
       onSubmit={async (emailAddress, name) => {
         await axios.post(
           "https://api.brevo.com/v3/contacts",

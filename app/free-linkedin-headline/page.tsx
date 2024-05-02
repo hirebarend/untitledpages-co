@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { Template1 } from "@/templates";
+import { Template2 } from "@/templates";
 
 function scramble(str: string, shift: number): string {
   const shiftAmount = shift % 26;
@@ -26,17 +26,44 @@ function scramble(str: string, shift: number): string {
 
 export default function Home() {
   return (
-    <Template1
+    <Template2
       heading="Get Your Free LinkedIn Headline"
-      onSubmit={async (entry) => {
+      message="Please check your inbox! You'll receive an email shortly."
+      onSubmit={async (emailAddress, name) => {
         await axios.post(
           "https://api.brevo.com/v3/contacts",
           {
             attributes: {
-              firstName: entry.metadata["name"],
+              firstName: name,
             },
-            email: entry.metadata["emailAddress"],
+            email: emailAddress,
             listIds: [4],
+            updateEnabled: true,
+          },
+          {
+            headers: {
+              "api-key": scramble(
+                "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
+                -12
+              ),
+            },
+          }
+        );
+
+        await axios.post(
+          "https://api.brevo.com/v3/smtp/email",
+          {
+            sender: {
+              name: "Barend",
+              email: "barend@untitledpages.co",
+            },
+            to: [
+              {
+                email: emailAddress,
+                name,
+              },
+            ],
+            templateId: 4,
           },
           {
             headers: {

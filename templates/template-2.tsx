@@ -13,6 +13,7 @@ import * as Yup from "yup";
 
 export function Template2(props: {
   heading: string;
+  message: string;
   onSubmit: (emailAddress: string, name: string) => Promise<void>;
   segment: string;
   subheadings: Array<string>;
@@ -144,11 +145,7 @@ export function Template2(props: {
             />
           </Form.Group>
 
-          {state ? (
-            <Alert variant="success">
-              Please check your inbox! You&apos;ll receive an email shortly.
-            </Alert>
-          ) : null}
+          {state ? <Alert variant="success">{props.message}</Alert> : null}
 
           {state ? null : (
             <Button

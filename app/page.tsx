@@ -42,12 +42,7 @@ export default function Home() {
                 name: entry.metadata["name"],
               },
             ],
-            subject: "Welcome Aboard – You're on the Waitlist!",
-            htmlContent: `<html><head></head><body><b>Dear ${
-              entry.metadata["name"]
-            },</b><p>Thank you for your interest in my 1-on-1 Software Engineering Mentorship! It's great to have you here, and I'm excited about the possibility of working together.<p><b>You are currently #${
-              entry.position
-            } on the waitlist.</b> I appreciate your patience as we work to bring you into the program as soon as possible.<p>Want to move up the list quicker? You can improve your queue position! Just share this unique link with your friends: ${`https://untitledpages.co/?referrer=${entry.id}`}. For each friend who signs up through your link, you'll advance in the queue, bringing you closer to starting your personalized mentorship journey.<p>Keep an eye on your inbox for further updates, and please feel free to reach out if you have any questions or need additional information. I'm here to assist you!<p>Best regards,</body></html>`,
+            templateId: 3,
           },
           {
             headers: {

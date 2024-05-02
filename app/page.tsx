@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { Template1 } from "@/templates";
+import { Template2 } from "@/templates";
 
 function scramble(str: string, shift: number): string {
   const shiftAmount = shift % 26;
@@ -26,9 +26,10 @@ function scramble(str: string, shift: number): string {
 
 export default function Home() {
   return (
-    <Template1
+    <Template2
       heading="The 1-on-1 Software Engineering Mentorship!"
-      onSubmit={async (entry) => {
+      message="Please check your inbox! You'll receive an email shortly."
+      onSubmit={async (emailAddress, name) => {
         await axios.post(
           "https://api.brevo.com/v3/smtp/email",
           {
@@ -38,8 +39,8 @@ export default function Home() {
             },
             to: [
               {
-                email: entry.metadata["emailAddress"],
-                name: entry.metadata["name"],
+                email: emailAddress,
+                name,
               },
             ],
             templateId: 3,
@@ -54,7 +55,7 @@ export default function Home() {
           }
         );
       }}
-      segment="mentorship"
+      segment="landing-page"
       subheadings={[
         "Grab your chance to be personally mentored by me. Reserve your spot on my mentorship waitlist today.",
         "Over 20 individuals are already on the waitlist.",

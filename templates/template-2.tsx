@@ -112,57 +112,59 @@ export function Template2(props: {
             {props.subheadings[1]}
           </div>
 
-          <Form.Group className="mb-4">
-            <Form.Control
-              id="name"
-              isInvalid={
-                formik.touched.name && formik.errors.name ? true : false
-              }
-              name="name"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              placeholder="Enter your name..."
-              size="lg"
-              type="text"
-              value={formik.values.name}
-            />
-          </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Control
-              id="emailAddress"
-              isInvalid={
-                formik.touched.emailAddress && formik.errors.emailAddress
-                  ? true
-                  : false
-              }
-              name="emailAddress"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              placeholder="Enter your email address..."
-              size="lg"
-              type="text"
-              value={formik.values.emailAddress}
-            />
-          </Form.Group>
+          {state ? (
+            <Alert variant="success">{props.message}</Alert>
+          ) : (
+            <>
+              <Form.Group className="mb-4">
+                <Form.Control
+                  id="name"
+                  isInvalid={
+                    formik.touched.name && formik.errors.name ? true : false
+                  }
+                  name="name"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  placeholder="Enter your name..."
+                  size="lg"
+                  type="text"
+                  value={formik.values.name}
+                />
+              </Form.Group>
+              <Form.Group className="mb-4">
+                <Form.Control
+                  id="emailAddress"
+                  isInvalid={
+                    formik.touched.emailAddress && formik.errors.emailAddress
+                      ? true
+                      : false
+                  }
+                  name="emailAddress"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  placeholder="Enter your email address..."
+                  size="lg"
+                  type="text"
+                  value={formik.values.emailAddress}
+                />
+              </Form.Group>
 
-          {state ? <Alert variant="success">{props.message}</Alert> : null}
+              <Button
+                className="fw-semibold mb-4 text-dark w-100"
+                disabled={formik.isSubmitting}
+                onClick={() => formik.submitForm()}
+                size="lg"
+              >
+                Continue&nbsp;
+                <BsArrowRight strokeWidth={0.375} />
+              </Button>
 
-          {state ? null : (
-            <Button
-              className="fw-semibold mb-4 text-dark w-100"
-              disabled={formik.isSubmitting}
-              onClick={() => formik.submitForm()}
-              size="lg"
-            >
-              Continue&nbsp;
-              <BsArrowRight strokeWidth={0.375} />
-            </Button>
+              <div>
+                By clicking &quot;Continue&quot; you agree to our{" "}
+                <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>
+              </div>
+            </>
           )}
-
-          <div>
-            By clicking &quot;Continue&quot; you agree to our{" "}
-            <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>
-          </div>
         </Col>
       </Row>
     </div>

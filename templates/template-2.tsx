@@ -96,6 +96,7 @@ export function Template2(props: {
               "https://media.licdn.com/dms/image/D4D03AQEUjbaZdUsgGQ/profile-displayphoto-shrink_400_400/0/1688470769990?e=1719446400&v=beta&t=e71HunuR1o9EDI6G7moQK3292jqqmvApI5CDyJQ1Pxc",
               "https://media.licdn.com/dms/image/D4E03AQGA3K3AVHRACg/profile-displayphoto-shrink_400_400/0/1699610969845?e=1719446400&v=beta&t=WAlFNn9xt2NGTxuzFUU6nvj6YlnQ8LBL59zrbJ7Mlug",
               "https://media.licdn.com/dms/image/C5603AQHSg60zgYsq0w/profile-displayphoto-shrink_400_400/0/1572587126292?e=1719446400&v=beta&t=a4DE6lrebzR0MrTf15B7pr4QuL-9oDoBmo9DId-OS-k",
+              "https://media.licdn.com/dms/image/D4D03AQG3J9ypQM2yAA/profile-displayphoto-shrink_400_400/0/1675257908638?e=1720656000&v=beta&t=jMOzAHHMHap9DyQ6OI2u52p8Gxr74Pwg-fadpODIdL8",
             ].map((x, index) => (
               <img
                 alt={`Image ${index + 1}`}

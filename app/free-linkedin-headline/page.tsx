@@ -78,7 +78,7 @@ export default function Home() {
       segment="free-linkedin-headline"
       subheadings={[
         "I'll personally craft a standout headline for your LinkedIn, plus provide a new banner to enhance your profile — all at no cost to you!",
-        "Only for 20 professionals, 2 left!",
+        "Only for 20 professionals, 1 left!",
       ]}
     />
   );

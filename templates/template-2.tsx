@@ -12,11 +12,9 @@ import { BsArrowRight } from "react-icons/bs";
 import * as Yup from "yup";
 
 export function Template2(props: {
-  heading: string;
+  children: string | JSX.Element | JSX.Element[];
   message: string;
   onSubmit: (emailAddress: string, name: string) => Promise<void>;
-  segment: string;
-  subheadings: Array<string>;
 }) {
   const [state, setState] = useState(false);
 
@@ -83,89 +81,59 @@ export function Template2(props: {
           md={{ order: 1, span: 6 }}
           lg={{ order: 1, span: 6 }}
         >
-          <h5 className="fw-bold text-primary">Exclusive</h5>
-          <h1 className="display-5 fw-bold mb-4">{props.heading}</h1>
-          <h2 className="lead lh-base mb-4">{props.subheadings[0]}</h2>
+          {props.children}
 
-          <div className="d-flex justify-content-center mb-1">
-            {[
-              "https://media.licdn.com/dms/image/C4D03AQEn7dr7sb-Mcw/profile-displayphoto-shrink_400_400/0/1619977048027?e=1719446400&v=beta&t=0OQwD1aAqCoAbP_Ge0HjHpMxHuMfX-xyoi3lu-r0pN8",
-              "https://media.licdn.com/dms/image/C5103AQHivmtnC3h65w/profile-displayphoto-shrink_400_400/0/1517612713175?e=1719446400&v=beta&t=tz1xTMhVxG830j0FIPM_znUzN9GMcMO75Nj5wovkq0A",
-              "https://media.licdn.com/dms/image/D4D03AQFtg8AGEYfyQA/profile-displayphoto-shrink_400_400/0/1713178817714?e=1719446400&v=beta&t=lkzvU3rDQOJB4y7jnxASNZevzI8WMr9duVU8A-OyiX8",
-              "https://media.licdn.com/dms/image/D4D03AQFfK-zhFL2E1w/profile-displayphoto-shrink_400_400/0/1669488535518?e=1719446400&v=beta&t=z-nLmnEIpztppthXm4agrNoeLjD7nYANvVFg4WKck8A",
-              "https://media.licdn.com/dms/image/D4D03AQEUjbaZdUsgGQ/profile-displayphoto-shrink_400_400/0/1688470769990?e=1719446400&v=beta&t=e71HunuR1o9EDI6G7moQK3292jqqmvApI5CDyJQ1Pxc",
-              "https://media.licdn.com/dms/image/D4E03AQGA3K3AVHRACg/profile-displayphoto-shrink_400_400/0/1699610969845?e=1719446400&v=beta&t=WAlFNn9xt2NGTxuzFUU6nvj6YlnQ8LBL59zrbJ7Mlug",
-              "https://media.licdn.com/dms/image/C5603AQHSg60zgYsq0w/profile-displayphoto-shrink_400_400/0/1572587126292?e=1719446400&v=beta&t=a4DE6lrebzR0MrTf15B7pr4QuL-9oDoBmo9DId-OS-k",
-              "https://media.licdn.com/dms/image/D4D03AQG3J9ypQM2yAA/profile-displayphoto-shrink_400_400/0/1675257908638?e=1720656000&v=beta&t=jMOzAHHMHap9DyQ6OI2u52p8Gxr74Pwg-fadpODIdL8",
-            ].map((x, index) => (
-              <img
-                alt={`Image ${index + 1}`}
-                className="rounded-circle"
-                key={x}
-                src={x}
-                style={{ marginLeft: index === 0 ? "0px" : "-24px" }}
-                width={48}
-              />
-            ))}
+          <Form.Group className="mb-4">
+            <Form.Control
+              id="name"
+              isInvalid={
+                formik.touched.name && formik.errors.name ? true : false
+              }
+              name="name"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              placeholder="Enter your name..."
+              size="lg"
+              type="text"
+              value={formik.values.name}
+            />
+          </Form.Group>
+          <Form.Group className="mb-4">
+            <Form.Control
+              id="emailAddress"
+              isInvalid={
+                formik.touched.emailAddress && formik.errors.emailAddress
+                  ? true
+                  : false
+              }
+              name="emailAddress"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              placeholder="Enter your email address..."
+              size="lg"
+              type="text"
+              value={formik.values.emailAddress}
+            />
+          </Form.Group>
+
+          {state ? <Alert variant="success">{props.message}</Alert> : null}
+
+          <Button
+            className="fw-semibold mb-4 w-100"
+            disabled={formik.isSubmitting || state}
+            onClick={() => formik.submitForm()}
+            size="lg"
+            variant="primary"
+          >
+            Register&nbsp;
+            <BsArrowRight strokeWidth={0.375} />
+          </Button>
+
+          <div>
+            By clicking &quot;Register&quot; you agree to our{" "}
+            <a href="/not-found">Privacy Policy</a> and{" "}
+            <a href="/not-found">Terms of Use</a>
           </div>
-
-          <div className="fst-italic mb-5 text-primary">
-            {props.subheadings[1]}
-          </div>
-
-          {state ? (
-            <Alert variant="success">{props.message}</Alert>
-          ) : (
-            <>
-              <Form.Group className="mb-4">
-                <Form.Control
-                  id="name"
-                  isInvalid={
-                    formik.touched.name && formik.errors.name ? true : false
-                  }
-                  name="name"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  placeholder="Enter your name..."
-                  size="lg"
-                  type="text"
-                  value={formik.values.name}
-                />
-              </Form.Group>
-              <Form.Group className="mb-4">
-                <Form.Control
-                  id="emailAddress"
-                  isInvalid={
-                    formik.touched.emailAddress && formik.errors.emailAddress
-                      ? true
-                      : false
-                  }
-                  name="emailAddress"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  placeholder="Enter your email address..."
-                  size="lg"
-                  type="text"
-                  value={formik.values.emailAddress}
-                />
-              </Form.Group>
-
-              <Button
-                className="fw-semibold mb-4 text-dark w-100"
-                disabled={formik.isSubmitting}
-                onClick={() => formik.submitForm()}
-                size="lg"
-              >
-                Continue&nbsp;
-                <BsArrowRight strokeWidth={0.375} />
-              </Button>
-
-              <div>
-                By clicking &quot;Continue&quot; you agree to our{" "}
-                <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>
-              </div>
-            </>
-          )}
         </Col>
       </Row>
     </div>

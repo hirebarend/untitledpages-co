@@ -5,16 +5,16 @@ import "./globals.scss";
 export const metadata: Metadata = {
   metadataBase: new URL(`https://untitledpages.co`),
   description:
-    "Grab your chance to be personally mentored by me. Reserve your spot on my mentorship waitlist today and start your transformative journey in software engineering.",
+    "Personalized mentorship program tailored to enhance your engineering skills and secure a more senior role.",
   // icons: "https://untitledpages.co/android-chrome-512x512.png",
-  title: "The 1-on-1 Software Engineering Mentorship! | Untitled Pages",
+  title: "Accelerate Your Software Engineering Career | Untitled Pages",
   openGraph: {
     type: "website",
     description:
-      "Grab your chance to be personally mentored by me. Reserve your spot on my mentorship waitlist today and start your transformative journey in software engineering.",
+      "Personalized mentorship program tailored to enhance your engineering skills and secure a more senior role.",
     images: [`https://untitledpages.co/images/open-graph-image.png?v=2`],
     siteName: "Untitled Pages",
-    title: "The 1-on-1 Software Engineering Mentorship! | Untitled Pages",
+    title: "Accelerate Your Software Engineering Career | Untitled Pages",
     url: `https://untitledpages.co`,
     ttl: 1000,
   },

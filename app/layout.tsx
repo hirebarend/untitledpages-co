@@ -3,7 +3,10 @@ import { Suspense } from "react";
 import "./globals.scss";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://untitledpages.co`),
+  alternates: {
+    canonical: "https://untitledpages.co",
+  },
+  metadataBase: new URL("https://untitledpages.co"),
   description:
     "Personalized mentorship program tailored to enhance your engineering skills and secure a more senior role.",
   // icons: "https://untitledpages.co/android-chrome-512x512.png",
@@ -12,10 +15,10 @@ export const metadata: Metadata = {
     type: "website",
     description:
       "Personalized mentorship program tailored to enhance your engineering skills and secure a more senior role.",
-    images: [`https://untitledpages.co/images/open-graph-image.png?v=2`],
+    images: [`https://untitledpages.co/images/open-graph-image.png?v=3`],
     siteName: "Untitled Pages",
     title: "Accelerate Your Software Engineering Career | Untitled Pages",
-    url: `https://untitledpages.co`,
+    url: "https://untitledpages.co",
     ttl: 1000,
   },
 };

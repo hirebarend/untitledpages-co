@@ -42,6 +42,7 @@ export default function Home() {
     setState(
       faker.helpers.arrayElements(
         [
+          "https://media.licdn.com/dms/image/D4D03AQEnhOVJiCkIKw/profile-displayphoto-shrink_400_400/0/1669053875661?e=1721260800&v=beta&t=68LfOwD7r69GnIBf5PX3w5YLge70L23GQViv7D0SCDo",
           "https://media.licdn.com/dms/image/D4D03AQHCCnzCqO8Mrg/profile-displayphoto-shrink_400_400/0/1710873945873?e=1721260800&v=beta&t=2UPdDSyUt4Y9DsQbJ6eIu_QoGA59ezqwU_Tc5BCKE6E",
           "https://media.licdn.com/dms/image/C4D03AQEn7dr7sb-Mcw/profile-displayphoto-shrink_400_400/0/1619977048027?e=1719446400&v=beta&t=0OQwD1aAqCoAbP_Ge0HjHpMxHuMfX-xyoi3lu-r0pN8",
           "https://media.licdn.com/dms/image/C5103AQHivmtnC3h65w/profile-displayphoto-shrink_400_400/0/1517612713175?e=1719446400&v=beta&t=tz1xTMhVxG830j0FIPM_znUzN9GMcMO75Nj5wovkq0A",

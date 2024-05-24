@@ -2,7 +2,10 @@
 
 import axios from "axios";
 import { faker } from "@faker-js/faker";
+import mixpanel from "mixpanel-browser";
 import moment from "moment";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { Template2 } from "@/templates";
 import { useEffect, useState } from "react";
 
@@ -39,6 +42,12 @@ export default function Home() {
   ]);
 
   useEffect(() => {
+    mixpanel.init("6570fb6b55412e8145762b070dd25c3b");
+
+    mixpanel.track("Page View");
+  }, []);
+
+  useEffect(() => {
     setState(
       faker.helpers.arrayElements(
         [
@@ -59,63 +68,104 @@ export default function Home() {
   }, []);
 
   return (
-    <Template2
-      message="Please check your inbox! You'll receive an email shortly."
-      onSubmit={async (emailAddress, name) => {
-        await axios.post(
-          "https://api.brevo.com/v3/smtp/email",
-          {
-            sender: {
-              name: "Barend",
-              email: "barend@untitledpages.co",
-            },
-            subject: `Barend <> ${name}`,
-            templateId: 3,
-            to: [
-              {
-                email: emailAddress,
-                name,
-              },
-            ],
-          },
-          {
-            headers: {
-              "api-key": scramble(
-                "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
-                -12
-              ),
-            },
-          }
-        );
-      }}
-    >
-      <h5 className="fw-bold text-primary text-uppercase">
-        Starting {moment().add(1, "months").format("MMMM YYYY")}
-      </h5>
-      <h1 className="display-5 fw-bold mb-4">
-        Accelerate Your Software Engineering Career
-      </h1>
-      <h2 className="lead lh-base mb-4">
-        Personalized mentorship program tailored to enhance your engineering
-        skills and secure a more senior role.
-      </h2>
+    <div>
+      <Row className="m-0">
+        <Col
+          className="custom-container px-3 px-md-5 text-center"
+          style={{ minHeight: "100dvh" }}
+          xs={{ order: 2, span: 12 }}
+          md={{ order: 1, span: 6 }}
+          lg={{ order: 1, span: 6 }}
+        >
+          <div className="mb-5">
+            <img
+              className="rounded-circle"
+              width="33%"
+              src="https://media.licdn.com/dms/image/D4D03AQFPoVsv5Iy2Eg/profile-displayphoto-shrink_400_400/0/1709877923476?e=1718841600&v=beta&t=jS0N9bJRFs9Jyhcli-d4XHNGxMez3dtA_CuXTKW9tw4"
+            />
+          </div>
 
-      <div className="d-flex justify-content-center mb-1">
-        {state.map((x, index) => (
-          <img
-            alt={`Image ${index + 1}`}
-            className="rounded-circle"
-            key={x}
-            src={x}
-            style={{ marginLeft: index === 0 ? "0px" : "-24px" }}
-            width={48}
-          />
-        ))}
-      </div>
+          <div className="fs-5 lh-base mb-3">
+            I&apos;m{" "}
+            <a
+              className="fw-bold text-dark"
+              href="https://www.linkedin.com/in/hirebarend"
+              referrerPolicy="no-referrer"
+              target="_blank"
+            >
+              Barend Erasmus
+            </a>
+            , a mentor with over 10 years in the software engineering industry.
+            My career has been a journey of consistent growth.
+          </div>
+        </Col>
+        <Col
+          className="bg-dark custom-container px-3 px-md-5 text-center text-white"
+          style={{ minHeight: "100dvh" }}
+          xs={{ order: 1, span: 12 }}
+          md={{ order: 1, span: 6 }}
+          lg={{ order: 1, span: 6 }}
+        >
+          <Template2
+            message="Please check your inbox! You'll receive an email shortly."
+            onSubmit={async (emailAddress, name) => {
+              await axios.post(
+                "https://api.brevo.com/v3/smtp/email",
+                {
+                  sender: {
+                    name: "Barend",
+                    email: "barend@untitledpages.co",
+                  },
+                  subject: `Barend <> ${name}`,
+                  templateId: 3,
+                  to: [
+                    {
+                      email: emailAddress,
+                      name,
+                    },
+                  ],
+                },
+                {
+                  headers: {
+                    "api-key": scramble(
+                      "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
+                      -12
+                    ),
+                  },
+                }
+              );
+            }}
+          >
+            <h5 className="fw-bold text-primary text-uppercase">
+              Starting {moment().add(1, "months").format("MMMM YYYY")}
+            </h5>
+            <h1 className="display-5 fw-bold mb-4">
+              Accelerate Your Software Engineering Career
+            </h1>
+            <h2 className="lead lh-base mb-4">
+              Personalized mentorship program tailored to enhance your
+              engineering skills and secure a more senior role.
+            </h2>
 
-      <div className="fst-italic mb-5 text-primary">
-        Over 20 individuals are already on the waitlist.
-      </div>
-    </Template2>
+            <div className="d-flex justify-content-center mb-1">
+              {state.map((x, index) => (
+                <img
+                  alt={`Image ${index + 1}`}
+                  className="rounded-circle"
+                  key={x}
+                  src={x}
+                  style={{ marginLeft: index === 0 ? "0px" : "-24px" }}
+                  width={48}
+                />
+              ))}
+            </div>
+
+            <div className="fst-italic mb-5 text-primary">
+              Over 20 individuals are already on the waitlist
+            </div>
+          </Template2>
+        </Col>
+      </Row>
+    </div>
   );
 }

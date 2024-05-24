@@ -1,2 +1,2 @@
 export * from "./firebase";
-export * from "./store.service";
+export * from "./referral.service";

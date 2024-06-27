@@ -81,7 +81,7 @@ export default function Home() {
             <img
               className="rounded-circle"
               width="33%"
-              src="https://media.licdn.com/dms/image/D4D03AQFPoVsv5Iy2Eg/profile-displayphoto-shrink_400_400/0/1709877923476?e=1718841600&v=beta&t=jS0N9bJRFs9Jyhcli-d4XHNGxMez3dtA_CuXTKW9tw4"
+              src="/images/1709877923476.jpeg"
             />
           </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
               engineering skills and secure a more senior role.
             </h2>
 
-            <div className="d-flex justify-content-center mb-1">
+            {/* <div className="d-flex justify-content-center mb-1">
               {state.map((x, index) => (
                 <img
                   alt={`Image ${index + 1}`}
@@ -158,11 +158,11 @@ export default function Home() {
                   width={48}
                 />
               ))}
-            </div>
+            </div> */ }
 
-            <div className="fst-italic mb-5 text-primary">
+            {/* <div className="fst-italic mb-5 text-primary">
               Over 20 individuals are already on the waitlist
-            </div>
+            </div> */}
           </Template2>
         </Col>
       </Row>

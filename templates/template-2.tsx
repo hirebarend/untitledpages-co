@@ -9,9 +9,13 @@ import { BsArrowRight } from "react-icons/bs";
 import * as Yup from "yup";
 
 export function Template2(props: {
+  button: {
+    text: string;
+  };
   children: string | JSX.Element | JSX.Element[];
   message: string;
   onSubmit: (emailAddress: string, name: string) => Promise<void>;
+  variant: "primary" | "secondary";
 }) {
   const [state, setState] = useState(false);
 
@@ -68,23 +72,28 @@ export function Template2(props: {
         />
       </Form.Group>
 
-      {state ? <Alert variant="success">{props.message}</Alert> : null}
+      {state ? <Alert variant="primary">{props.message}</Alert> : null}
 
       <Button
         className="fw-semibold mb-4 w-100"
         disabled={formik.isSubmitting || state}
         onClick={() => formik.submitForm()}
         size="lg"
-        variant="primary"
+        variant={props.variant}
       >
-        Register&nbsp;
+        {props.button.text}&nbsp;
         <BsArrowRight strokeWidth={0.375} />
       </Button>
 
       <div>
-        By clicking &quot;Register&quot; you agree to our{" "}
-        <a href="/not-found">Privacy Policy</a> and{" "}
-        <a href="/not-found">Terms of Use</a>
+        By clicking &quot;{props.button.text}&quot; you agree to our{" "}
+        <a className="text-white" href="/not-found">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a className="text-white" href="/not-found">
+          Terms of Use
+        </a>
       </div>
     </>
   );

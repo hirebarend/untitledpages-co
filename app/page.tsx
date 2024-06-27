@@ -32,13 +32,14 @@ function scramble(str: string, shift: number): string {
 
 export default function Home() {
   const [state, setState] = useState([
-    "https://media.licdn.com/dms/image/D4D03AQG3J9ypQM2yAA/profile-displayphoto-shrink_400_400/0/1675257908638?e=1720656000&v=beta&t=jMOzAHHMHap9DyQ6OI2u52p8Gxr74Pwg-fadpODIdL8",
-    "https://media.licdn.com/dms/image/D4D03AQFfK-zhFL2E1w/profile-displayphoto-shrink_400_400/0/1669488535518?e=1719446400&v=beta&t=z-nLmnEIpztppthXm4agrNoeLjD7nYANvVFg4WKck8A",
-    "https://media.licdn.com/dms/image/D4D03AQHCCnzCqO8Mrg/profile-displayphoto-shrink_400_400/0/1710873945873?e=1721260800&v=beta&t=2UPdDSyUt4Y9DsQbJ6eIu_QoGA59ezqwU_Tc5BCKE6E",
-    "https://media.licdn.com/dms/image/C5103AQHivmtnC3h65w/profile-displayphoto-shrink_400_400/0/1517612713175?e=1719446400&v=beta&t=tz1xTMhVxG830j0FIPM_znUzN9GMcMO75Nj5wovkq0A",
-    "https://media.licdn.com/dms/image/D4D03AQFtg8AGEYfyQA/profile-displayphoto-shrink_400_400/0/1713178817714?e=1719446400&v=beta&t=lkzvU3rDQOJB4y7jnxASNZevzI8WMr9duVU8A-OyiX8",
-    "https://media.licdn.com/dms/image/C4D03AQEn7dr7sb-Mcw/profile-displayphoto-shrink_400_400/0/1619977048027?e=1719446400&v=beta&t=0OQwD1aAqCoAbP_Ge0HjHpMxHuMfX-xyoi3lu-r0pN8",
-    "https://media.licdn.com/dms/image/D4D03AQEUjbaZdUsgGQ/profile-displayphoto-shrink_400_400/0/1688470769990?e=1719446400&v=beta&t=e71HunuR1o9EDI6G7moQK3292jqqmvApI5CDyJQ1Pxc",
+    "/images/profiles/1692021864573.jpeg",
+
+    "/images/profiles/1609676225303.jpeg",
+    "/images/profiles/1666675473844.jpeg",
+    "/images/profiles/1682369916971.jpeg",
+    "/images/profiles/1695839764154.jpeg",
+    "/images/profiles/1595699719368.jpeg",
+    "/images/profiles/1696133927472.jpeg",
   ]);
 
   useEffect(() => {
@@ -51,16 +52,14 @@ export default function Home() {
     setState(
       faker.helpers.arrayElements(
         [
-          "https://media.licdn.com/dms/image/D4D03AQEnhOVJiCkIKw/profile-displayphoto-shrink_400_400/0/1669053875661?e=1721260800&v=beta&t=68LfOwD7r69GnIBf5PX3w5YLge70L23GQViv7D0SCDo",
-          "https://media.licdn.com/dms/image/D4D03AQHCCnzCqO8Mrg/profile-displayphoto-shrink_400_400/0/1710873945873?e=1721260800&v=beta&t=2UPdDSyUt4Y9DsQbJ6eIu_QoGA59ezqwU_Tc5BCKE6E",
-          "https://media.licdn.com/dms/image/C4D03AQEn7dr7sb-Mcw/profile-displayphoto-shrink_400_400/0/1619977048027?e=1719446400&v=beta&t=0OQwD1aAqCoAbP_Ge0HjHpMxHuMfX-xyoi3lu-r0pN8",
-          "https://media.licdn.com/dms/image/C5103AQHivmtnC3h65w/profile-displayphoto-shrink_400_400/0/1517612713175?e=1719446400&v=beta&t=tz1xTMhVxG830j0FIPM_znUzN9GMcMO75Nj5wovkq0A",
-          "https://media.licdn.com/dms/image/D4D03AQFtg8AGEYfyQA/profile-displayphoto-shrink_400_400/0/1713178817714?e=1719446400&v=beta&t=lkzvU3rDQOJB4y7jnxASNZevzI8WMr9duVU8A-OyiX8",
-          "https://media.licdn.com/dms/image/D4D03AQFfK-zhFL2E1w/profile-displayphoto-shrink_400_400/0/1669488535518?e=1719446400&v=beta&t=z-nLmnEIpztppthXm4agrNoeLjD7nYANvVFg4WKck8A",
-          "https://media.licdn.com/dms/image/D4D03AQEUjbaZdUsgGQ/profile-displayphoto-shrink_400_400/0/1688470769990?e=1719446400&v=beta&t=e71HunuR1o9EDI6G7moQK3292jqqmvApI5CDyJQ1Pxc",
-          "https://media.licdn.com/dms/image/D4E03AQGA3K3AVHRACg/profile-displayphoto-shrink_400_400/0/1699610969845?e=1719446400&v=beta&t=WAlFNn9xt2NGTxuzFUU6nvj6YlnQ8LBL59zrbJ7Mlug",
-          "https://media.licdn.com/dms/image/C5603AQHSg60zgYsq0w/profile-displayphoto-shrink_400_400/0/1572587126292?e=1719446400&v=beta&t=a4DE6lrebzR0MrTf15B7pr4QuL-9oDoBmo9DId-OS-k",
-          "https://media.licdn.com/dms/image/D4D03AQG3J9ypQM2yAA/profile-displayphoto-shrink_400_400/0/1675257908638?e=1720656000&v=beta&t=jMOzAHHMHap9DyQ6OI2u52p8Gxr74Pwg-fadpODIdL8",
+          "/images/profiles/1692021864573.jpeg",
+
+          "/images/profiles/1609676225303.jpeg",
+          "/images/profiles/1666675473844.jpeg",
+          "/images/profiles/1682369916971.jpeg",
+          "/images/profiles/1695839764154.jpeg",
+          "/images/profiles/1595699719368.jpeg",
+          "/images/profiles/1696133927472.jpeg",
         ],
         7
       )
@@ -80,23 +79,17 @@ export default function Home() {
           <div className="mb-5">
             <img
               className="rounded-circle"
-              width="33%"
-              src="/images/1709877923476.jpeg"
+              width="25%"
+              src="/images/icon.png"
             />
           </div>
 
           <div className="fs-5 lh-base mb-3">
-            I&apos;m{" "}
-            <a
-              className="fw-bold text-dark"
-              href="https://www.linkedin.com/in/hirebarend"
-              referrerPolicy="no-referrer"
-              target="_blank"
-            >
-              Barend Erasmus
-            </a>
-            , a mentor with over 10 years in the software engineering industry.
-            My career has been a journey of consistent growth.
+            Talented Engineers is an invite-only platform designed to connect
+            organizations with the finest software engineering talent. We
+            meticulously screen every candidate to ensure they are among the top
+            1% in their field, guaranteeing that only the most skilled and
+            qualified engineers become part of our network.
           </div>
         </Col>
         <Col
@@ -107,47 +100,48 @@ export default function Home() {
           lg={{ order: 1, span: 6 }}
         >
           <Template2
+            button={{ text: "Join" }}
             message="Please check your inbox! You'll receive an email shortly."
             onSubmit={async (emailAddress, name) => {
-              await axios.post(
-                "https://api.brevo.com/v3/smtp/email",
-                {
-                  sender: {
-                    name: "Barend",
-                    email: "barend@untitledpages.co",
-                  },
-                  subject: `Barend <> ${name}`,
-                  templateId: 3,
-                  to: [
-                    {
-                      email: emailAddress,
-                      name,
-                    },
-                  ],
-                },
-                {
-                  headers: {
-                    "api-key": scramble(
-                      "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
-                      -12
-                    ),
-                  },
-                }
-              );
+              // await axios.post(
+              //   "https://api.brevo.com/v3/smtp/email",
+              //   {
+              //     sender: {
+              //       name: "Barend",
+              //       email: "barend@untitledpages.co",
+              //     },
+              //     subject: `Barend <> ${name}`,
+              //     templateId: 3,
+              //     to: [
+              //       {
+              //         email: emailAddress,
+              //         name,
+              //       },
+              //     ],
+              //   },
+              //   {
+              //     headers: {
+              //       "api-key": scramble(
+              //         "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
+              //         -12
+              //       ),
+              //     },
+              //   }
+              // );
             }}
+            variant="secondary"
           >
-            <h5 className="fw-bold text-primary text-uppercase">
-              Starting {moment().add(1, "months").format("MMMM YYYY")}
+            <h5 className="fw-bold text-secondary text-uppercase">
+              Beta Phase
             </h5>
-            <h1 className="display-5 fw-bold mb-4">
-              Accelerate Your Software Engineering Career
-            </h1>
+            <h1 className="display-5 fw-bold mb-4">Join Talented Engineers</h1>
             <h2 className="lead lh-base mb-4">
-              Personalized mentorship program tailored to enhance your
-              engineering skills and secure a more senior role.
+              Connect with exceptional opportunities as a member of our network.
+              Join our beta phase now — afterwards, access will be invite-only.
+              Don’t miss your chance to be part of the top 1% of engineers.
             </h2>
 
-            {/* <div className="d-flex justify-content-center mb-1">
+            <div className="d-flex justify-content-center mb-1">
               {state.map((x, index) => (
                 <img
                   alt={`Image ${index + 1}`}
@@ -158,11 +152,11 @@ export default function Home() {
                   width={48}
                 />
               ))}
-            </div> */ }
+            </div>
 
-            {/* <div className="fst-italic mb-5 text-primary">
-              Over 20 individuals are already on the waitlist
-            </div> */}
+            <div className="fst-italic mb-5 text-secondary">
+              Over 164 engineers already on board!
+            </div>
           </Template2>
         </Col>
       </Row>

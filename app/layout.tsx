@@ -8,16 +8,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://untitledpages.co"),
   description:
-    "Personalized mentorship program tailored to enhance your engineering skills and secure a more senior role.",
+    "Talented Engineers is an invite-only platform designed to connect organizations with the finest software engineering talent.",
   // icons: "https://untitledpages.co/android-chrome-512x512.png",
-  title: "Accelerate Your Software Engineering Career | Untitled Pages",
+  title: "Join Talented Engineers",
   openGraph: {
     type: "website",
     description:
-      "Personalized mentorship program tailored to enhance your engineering skills and secure a more senior role.",
-    images: [`https://untitledpages.co/images/open-graph-image.png?v=3`],
+      "Talented Engineers is an invite-only platform designed to connect organizations with the finest software engineering talent.",
+    images: [`https://untitledpages.co/images/open-graph-image.png?v=4`],
     siteName: "Untitled Pages",
-    title: "Accelerate Your Software Engineering Career | Untitled Pages",
+    title: "Join Talented Engineers",
     url: "https://untitledpages.co",
     ttl: 1000,
   },

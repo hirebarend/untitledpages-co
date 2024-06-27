@@ -103,42 +103,40 @@ export default function Home() {
             button={{ text: "Join" }}
             message="Please check your inbox! You'll receive an email shortly."
             onSubmit={async (emailAddress, name) => {
-              // await axios.post(
-              //   "https://api.brevo.com/v3/smtp/email",
-              //   {
-              //     sender: {
-              //       name: "Barend",
-              //       email: "barend@untitledpages.co",
-              //     },
-              //     subject: `Barend <> ${name}`,
-              //     templateId: 3,
-              //     to: [
-              //       {
-              //         email: emailAddress,
-              //         name,
-              //       },
-              //     ],
-              //   },
-              //   {
-              //     headers: {
-              //       "api-key": scramble(
-              //         "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
-              //         -12
-              //       ),
-              //     },
-              //   }
-              // );
+              await axios.post(
+                "https://api.brevo.com/v3/smtp/email",
+                {
+                  sender: {
+                    name: "Barend",
+                    email: "barend@untitledpages.co",
+                  },
+                  templateId: 15,
+                  to: [
+                    {
+                      email: emailAddress,
+                      name,
+                    },
+                  ],
+                },
+                {
+                  headers: {
+                    "api-key": scramble(
+                      "jwqkeun-pn1m9445mp2p35nn85n79mp209qq2qnrmo3q033prq8n17orm1459n503m4oorm7-QxkUuOMvKNL8scUH",
+                      -12
+                    ),
+                  },
+                }
+              );
             }}
             variant="secondary"
           >
             <h5 className="fw-bold text-secondary text-uppercase">
-              Beta Phase
+              Exclusive Access
             </h5>
             <h1 className="display-5 fw-bold mb-4">Join Talented Engineers</h1>
             <h2 className="lead lh-base mb-4">
-              Connect with exceptional opportunities as a member of our network.
-              Join our beta phase now — afterwards, access will be invite-only.
-              Don’t miss your chance to be part of the top 1% of engineers.
+              Become a member of the finest software engineering talent. Join
+              now before we switch to invite-only access.
             </h2>
 
             <div className="d-flex justify-content-center mb-1">

@@ -3,7 +3,6 @@
 import axios from "axios";
 import { faker } from "@faker-js/faker";
 import mixpanel from "mixpanel-browser";
-import moment from "moment";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Template2 } from "@/templates";
@@ -85,11 +84,9 @@ export default function Home() {
           </div>
 
           <div className="fs-5 lh-base mb-3">
-            Talented Engineers is an invite-only platform designed to connect
-            organizations with the finest software engineering talent. We
-            meticulously screen every candidate to ensure they are among the top
-            1% in their field, guaranteeing that only the most skilled and
-            qualified engineers become part of our network.
+            Talented Engineers is an exclusive network of the finest software
+            engineering talent in the world. Top companies hire Talented
+            Engineers for their most important projects.
           </div>
         </Col>
         <Col
@@ -131,7 +128,7 @@ export default function Home() {
             variant="secondary"
           >
             <h5 className="fw-bold text-secondary text-uppercase">
-              Exclusive Access
+              Exclusive Network
             </h5>
             <h1 className="display-5 fw-bold mb-4">Join Talented Engineers</h1>
             <h2 className="lead lh-base mb-4">

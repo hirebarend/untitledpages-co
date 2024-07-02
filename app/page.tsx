@@ -69,7 +69,7 @@ export default function Home() {
     <div>
       <Row className="m-0">
         <Col
-          className="custom-container px-3 px-md-5 text-center"
+          className="custom-container d-none d-md-block px-3 px-md-5 text-center"
           style={{ minHeight: "100dvh" }}
           xs={{ order: 2, span: 12 }}
           md={{ order: 1, span: 6 }}
@@ -84,9 +84,8 @@ export default function Home() {
           </div>
 
           <div className="fs-5 lh-base mb-3">
-            Talented Engineers is an exclusive network of the finest software
-            engineering talent in the world. Top companies hire Talented
-            Engineers for their most important projects.
+            Talented Engineers connects you with rigorously vetted, world-class
+            engineers ready to tackle your most challenging projects.
           </div>
         </Col>
         <Col
@@ -107,6 +106,7 @@ export default function Home() {
                     name: "Barend",
                     email: "barend@untitledpages.co",
                   },
+                  subject: `Talented Engineers <> ${name}`,
                   templateId: 15,
                   to: [
                     {
@@ -132,8 +132,9 @@ export default function Home() {
             </h5>
             <h1 className="display-5 fw-bold mb-4">Join Talented Engineers</h1>
             <h2 className="lead lh-base mb-4">
-              Become a member of the finest software engineering talent. Join
-              now before we switch to invite-only access.
+              Talented Engineers connects you with rigorously vetted,
+              world-class engineers ready to tackle your most challenging
+              projects.
             </h2>
 
             <div className="d-flex justify-content-center mb-1">

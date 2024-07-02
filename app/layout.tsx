@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://untitledpages.co"),
   description:
-    "Talented Engineers is an invite-only platform designed to connect organizations with the finest software engineering talent.",
+    "Talented Engineers connects you with rigorously vetted, world-class engineers ready to tackle your most challenging projects.",
   // icons: "https://untitledpages.co/android-chrome-512x512.png",
   title: "Join Talented Engineers",
   openGraph: {
     type: "website",
     description:
-      "Talented Engineers is an invite-only platform designed to connect organizations with the finest software engineering talent.",
+      "Talented Engineers connects you with rigorously vetted, world-class engineers ready to tackle your most challenging projects.",
     images: [`https://untitledpages.co/images/open-graph-image.png?v=4`],
     siteName: "Untitled Pages",
     title: "Join Talented Engineers",

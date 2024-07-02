@@ -92,7 +92,7 @@ export function Template2(props: {
         </a>{" "}
         and{" "}
         <a className="text-white" href="/not-found">
-          Terms of Use
+          Terms of Service
         </a>
       </div>
     </>

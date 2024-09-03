@@ -4,21 +4,21 @@ import "./globals.scss";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://untitledpages.co",
+    canonical: "https://getverified.co.za",
   },
-  metadataBase: new URL("https://untitledpages.co"),
+  metadataBase: new URL("https://getverified.co.za"),
   description:
-    "Talented Engineers connects you with rigorously vetted, world-class engineers ready to tackle your most challenging projects.",
-  // icons: "https://untitledpages.co/android-chrome-512x512.png",
-  title: "Join Talented Engineers",
+    "Get Verified makes digital identity simple. We make it easy for people to access services by digitally verifying them using our Identity Platform.",
+  icons: "https://getverified.co.za/icon.png",
+  title: "Home | Get Verified",
   openGraph: {
     type: "website",
     description:
-      "Talented Engineers connects you with rigorously vetted, world-class engineers ready to tackle your most challenging projects.",
-    images: [`https://untitledpages.co/images/open-graph-image.png?v=4`],
-    siteName: "Untitled Pages",
-    title: "Join Talented Engineers",
-    url: "https://untitledpages.co",
+      "Get Verified makes digital identity simple. We make it easy for people to access services by digitally verifying them using our Identity Platform.",
+    images: [`https://getverified.co.za/images/open-graph-image.png?v=4`],
+    siteName: "Get Verified",
+    title: "Home | Get Verified",
+    url: "https://getverified.co.za",
     ttl: 1000,
   },
 };

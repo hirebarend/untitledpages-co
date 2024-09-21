@@ -4,5 +4,5 @@
   "rangeStrategy": "bump",
   "automerge": true,
   "automergeType": "pr",
-  "autoapprove": true
+  "requiredStatusChecks": null
 }

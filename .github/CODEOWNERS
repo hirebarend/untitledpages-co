@@ -1,4 +1,0 @@
-# Default rule to require review by a specific team or user
-* @required-reviewer
-# For Renovate PRs, bypass the review requirement
-renovate/* @renovate-bot

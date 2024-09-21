@@ -4,5 +4,7 @@
   "rangeStrategy": "bump",
   "automerge": true,
   "automergeType": "pr",
+  "updateNotScheduled": false,
+  "platformAutomerge": true,
   "requiredStatusChecks": null
 }

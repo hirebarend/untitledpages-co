@@ -46,12 +46,12 @@ steps:
       rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
       includeRootFolder: false
       archiveFile: "$(Build.ArtifactStagingDirectory)/artifact.zip"
-  - task: AzureStaticWebApp@0
-    displayName: "Deploy Static Web App"
-    inputs:
-      app_location: out
-      skip_app_build: false
-      skip_api_build: false
-      is_static_export: false
-      verbose: false
-      azure_static_web_apps_api_token: $(deployment_token)
+  # - task: AzureStaticWebApp@0
+  #   displayName: "Deploy Static Web App"
+  #   inputs:
+  #     app_location: out
+  #     skip_app_build: false
+  #     skip_api_build: false
+  #     is_static_export: false
+  #     verbose: false
+  #     azure_static_web_apps_api_token: $(deployment_token)

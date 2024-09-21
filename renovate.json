@@ -4,7 +4,7 @@
   "automerge": true,
   "automergeType": "pr",
   "platformAutomerge": true,
-  "prConcurrentLimit": 0,
+  "prConcurrentLimit": 10,
   "rangeStrategy": "bump",
   "requiredStatusChecks": null,
   "updateNotScheduled": false

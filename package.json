@@ -12,7 +12,7 @@
     "@faker-js/faker": "^9.0.3",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
-    "firebase": "^10.14.0",
+    "firebase": "^10.14.1",
     "formik": "^2.4.6",
     "mixpanel-browser": "^2.55.1",
     "moment": "^2.30.1",
